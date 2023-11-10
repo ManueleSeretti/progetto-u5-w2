@@ -30,7 +30,7 @@ public class DeviceService {
         Device d = new Device();
         d.setName(body.name());
         d.setStato(body.stato());
-        d.setUserId(u);
+        d.setUser(u);
 
         return deviceRepository.save(d);
     }
@@ -54,7 +54,7 @@ public class DeviceService {
         User u = userService.findById(body.userID());
         found.setName(body.name());
         found.setStato(body.stato());
-        found.setUserId(u);
+        found.setUser(u);
 
 
         return deviceRepository.save(found);

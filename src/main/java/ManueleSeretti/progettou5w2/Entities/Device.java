@@ -13,15 +13,16 @@ public class Device {
     private long id;
 
     private String name;
+    
     @Enumerated(EnumType.STRING)
     private StatoDevice stato;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private User userId;
+    private User user;
 
-    public void setUserId(User user) {
-        this.userId = user;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public void setName(String name) {

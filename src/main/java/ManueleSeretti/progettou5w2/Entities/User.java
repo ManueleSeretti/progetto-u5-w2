@@ -29,7 +29,7 @@ public class User {
     @CreationTimestamp
     private Date createAt;
 
-    @OneToMany(mappedBy = "userId")
+    @OneToMany(mappedBy = "user")
     @JsonIgnore
     private List<Device> listaDevice;
 

@@ -27,7 +27,7 @@ public class DeviceController {
     // 2. POST http://localhost:3001/users (+ body)
     @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED) // <-- 201
-    public Device saveUser(@RequestBody @Validated newDeviceDTO body, BindingResult validation) {
+    public Device saveDevice(@RequestBody @Validated newDeviceDTO body, BindingResult validation) {
         if (validation.hasErrors()) {
             throw new BadRequestException(validation.getAllErrors());
         } else {
