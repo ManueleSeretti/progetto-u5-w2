@@ -20,8 +20,8 @@ public class RunnerUsers implements CommandLineRunner {
         Faker faker = new Faker(Locale.ITALY);
         Supplier<newUserDTO> userSupplier = () -> new newUserDTO(faker.name().firstName(), faker.name().lastName(), faker.name().username(), faker.internet().emailAddress());
 
-        for (int i = 0; i < 30; i++) {
-            userService.save(userSupplier.get());
-        }
+//        for (int i = 0; i < 30; i++) {
+//            userService.save(userSupplier.get());
+//        }
     }
 }

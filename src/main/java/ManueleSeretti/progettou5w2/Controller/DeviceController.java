@@ -20,19 +20,19 @@ public class DeviceController {
     private DeviceService deviceService;
 
     @GetMapping("")
-    public Page<Device> getDevices(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "5") int size) {
+    public Page<Device> getDevices(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "25") int size) {
         return deviceService.getDevices(page, size);
     }
 
     // 2. POST http://localhost:3001/users (+ body)
     @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED) // <-- 201
-    public Device saveDevice(@RequestBody @Validated newDeviceDTO body, BindingResult validation) {
+    public Device save(@RequestBody @Validated newDeviceDTO body, BindingResult validation) {
         if (validation.hasErrors()) {
             throw new BadRequestException(validation.getAllErrors());
         } else {
             try {
-                return deviceService.save(body);
+                return deviceService.assegnaDevice(body);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
