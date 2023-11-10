@@ -33,6 +33,13 @@ public class User {
     @JsonIgnore
     private List<Device> listaDevice;
 
+    public User(String name, String surname, String username, String email) {
+        this.name = name;
+        this.surname = surname;
+        this.username = username;
+        this.email = email;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -52,4 +59,5 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
+
 }

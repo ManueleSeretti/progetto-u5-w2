@@ -4,6 +4,7 @@ import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
+
 public record newUserDTO(
         @NotEmpty(message = "Il nome è un campo obbligatorio!")
         @Size(min = 3, max = 30, message = "Il nome deve essere compreso tra 3 e 30 caratteri")
@@ -17,4 +18,7 @@ public record newUserDTO(
         String email
 
 ) {
+
+    public newUserDTO {
+    }
 }
