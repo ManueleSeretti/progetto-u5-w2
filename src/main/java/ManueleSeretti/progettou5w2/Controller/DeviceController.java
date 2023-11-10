@@ -32,7 +32,7 @@ public class DeviceController {
             throw new BadRequestException(validation.getAllErrors());
         } else {
             try {
-                return deviceService.assegnaDevice(body);
+                return deviceService.save(body);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
