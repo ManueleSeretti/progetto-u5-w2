@@ -22,7 +22,7 @@ public class RunnerDevices implements CommandLineRunner {
 
         Faker faker = new Faker(Locale.ITALY);
         Random rndm = new Random();
-//
+
 //        for (int i = 0; i < 50; i++) {
 //
 //            long userId = userService.findById(rndm.nextInt(1, 31)).getId();

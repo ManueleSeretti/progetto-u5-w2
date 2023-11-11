@@ -5,6 +5,7 @@ import ManueleSeretti.progettou5w2.Entities.StatoDevice;
 import ManueleSeretti.progettou5w2.Entities.User;
 import ManueleSeretti.progettou5w2.Payloads.newDeviceDTO;
 import ManueleSeretti.progettou5w2.Repositories.DeviceRepository;
+import ManueleSeretti.progettou5w2.exceptions.BadRequestException;
 import ManueleSeretti.progettou5w2.exceptions.NotFoundException;
 import com.cloudinary.Cloudinary;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +27,6 @@ public class DeviceService {
     private Cloudinary cloudinary;
 
     public Device save(newDeviceDTO body) throws IOException {
-
-
         User u = userService.findById(body.userID());
         Device d = new Device();
         d.setName(body.name());
@@ -42,19 +41,20 @@ public class DeviceService {
 
     }
 
-//    public Device assegnaDevice(newDeviceDTO body) throws IOException {
-//
-//        User u = userService.findById(body.userID());
-//        Device d = new Device();
-//        d.setName(body.name());
-//        d.setStato(body.stato());
-//        d.setUser(u);
-//        if (d.getStato() == StatoDevice.DISPONIBILE) {
-//            return deviceRepository.save(d);
-//
-//        }
-//
-//    }
+    public Device assegnaDevice(long id, newDeviceDTO body) throws IOException {
+
+        User u = userService.findById(body.userID());
+        Device deviceFound = this.findById(id);
+        Device d = new Device();
+        d.setName(body.name());
+        d.setStato(body.stato());
+        d.setUser(u);
+        if (deviceFound.getStato() != StatoDevice.DISPONIBILE || d.getUser() == null) {
+
+            throw new BadRequestException("non è possibile assegnare questo dispositivo!!! ");
+        }
+        return deviceRepository.save(d);
+    }
 
     public Page<Device> getDevices(int page, int size) {
         Pageable pageable = PageRequest.of(page, size);

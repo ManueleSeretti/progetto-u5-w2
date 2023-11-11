@@ -61,4 +61,8 @@ public class DeviceController {
         deviceService.findByIdAndDelete(id);
     }
 
+    @PutMapping("/assign/{id}")
+    public Device assegnaDevice(@PathVariable int id, @RequestBody newDeviceDTO body) throws IOException {
+        return deviceService.assegnaDevice(id, body);
+    }
 }
